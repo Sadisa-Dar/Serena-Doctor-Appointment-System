@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Aboreto&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Aboreto", system-ui;
+      background: linear-gradient(to bottom right, #fffafa, #ffe5e5);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    .header {
+      background-color: #fffafa;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+      border-bottom: 3px solid #d40404;
+      height: 90px;
+      padding: 0 40px;
+    }
+
+    .header img {
+      height: 130px;
+      width: 130px;
+    }
+
+    .title {
+      font-size: 38px;
+      margin: 0;
+      color: #d40404;
+      letter-spacing: 2px;
+    }
+
+    .dashboard-container {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 30px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: rgba(255, 250, 250, 0.75);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 0, 0, 0.15);
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      padding: 30px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .card .material-icons-outlined {
+      font-size: 48px;
+      color: #d40404;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 22px;
+      color: #d40404;
+    }
+
+    .card p {
+      color: #444;
+      font-size: 15px;
+      margin-top: 10px;
+      opacity: 0.85;
+    }
+
+    .dashboard-title {
+      text-align: center;
+      font-size: 36px;
+      color: #d40404;
+      margin-top: 40px;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 600px) {
+      .title {
+        font-size: 30px;
+      }
+
+      .dashboard-title {
+        font-size: 28px;
+      }
+
+      .card {
+        padding: 25px 20px;
+      }
+
+      .card .material-icons-outlined {
+        font-size: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <a href="Home.html" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+      <img src="logo.png" alt="Logo" />
+      <p class="title">SERENA</p>
+    </a>
+    <div style="margin-left: auto;">
+      <a href="staff_logout.php" style="text-decoration: none; color: #d40404; font-weight: bold; padding: 10px 20px; border: 2px solid #d40404; border-radius: 15px; transition: all 0.3s ease;">Logout</a>
+    </div>
+  </div>
+
+  <!-- Dashboard Title -->
+  <h2 class="dashboard-title">Staff Control Panel</h2>
+
+  <!-- Dashboard Cards -->
+  <div class="dashboard-container">
+    <div class="card" onclick="location.href='manage_appointments_by_staff.php'">
+      <span class="material-icons-outlined">event_note</span>
+      <h3>Manage Appointments</h3>
+      <p>View, schedule, reschedule, or cancel patient appointments with ease.</p>
+    </div>
+
+    <div class="card" onclick="location.href='doctor_display.php'">
+      <span class="material-icons-outlined">person</span>
+      <h3>Doctor Directory</h3>
+      <p>Update doctor profiles, availability, and other essential information.</p>
+    </div>
+
+    <div class="card" onclick="location.href='staff_notification.php'">
+      <span class="material-icons-outlined">notifications_active</span>
+      <h3>Send Notifications</h3>
+      <p>Send appointment reminders or follow-up messages to patients.</p>
+    </div>
+  </div>
+
+</body>
+</html>

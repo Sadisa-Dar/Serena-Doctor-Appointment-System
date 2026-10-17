@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Aboreto&display=swap" rel="stylesheet" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Aboreto", system-ui;
+      background: linear-gradient(to bottom right, #fffafa, #ffe5e5);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    .header {
+      background-color: #fffafa;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-bottom: 3px solid #d40404;
+      height: 90px;
+      padding: 0 40px;
+    }
+
+    .header img {
+      height: 130px;
+      width: 130px;
+    }
+
+    .title {
+      font-size: 38px;
+      margin: 0;
+      margin-left: -px;
+      color: #d40404;
+      letter-spacing: 2px;
+    }
+
+    .form-container {
+      max-width: 480px;
+      margin: 60px auto;
+      background-color: #fffafa;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      opacity: 0;
+      transform: translateY(50px);
+      animation: slideUp 1s ease forwards 0.2s;
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 32px;
+      color: #d40404;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .form-group:focus-within {
+      transform: scale(1.01);
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 14px;
+      background: #fff;
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    }
+
+    .form-group input:focus {
+      border-color: #d40404;
+      box-shadow: 0 0 10px rgba(212, 4, 4, 0.2);
+      outline: none;
+    }
+
+    .submit-btn {
+      display: block;
+      margin: 0 auto;
+      width: 60%;
+      max-width: 220px;
+      padding: 12px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #fff;
+      background: linear-gradient(to right, #d40404, #b40303);
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .submit-btn:hover {
+      background: #a60202;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 600px) {
+      .title {
+        font-size: 30px;
+        margin-left: 10px;
+      }
+
+      .form-container {
+        margin: 40px 20px;
+        padding: 30px 20px;
+      }
+    }
+
+    @keyframes slideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <img src="logo.png" alt="Logo" />
+    <p class="title">SERENA</p>
+  </div>
+
+  <!-- Staff Login Form -->
+  <div class="form-container">
+    <h2>Staff Login</h2>
+    <form action="staff_insert.php" method="post">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" required />
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div style="position: relative;">
+          <input type="password" id="password" name="password" required autocomplete="new-password" value="" placeholder="Enter your password" />
+          <button type="button" id="togglePassword" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 14px; color: #d40404;">
+            Show
+          </button>
+        </div>
+      </div><br>
+      <button type="submit" class="submit-btn">Login</button><br>
+    </form>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('password');
+
+    // Ensure password field is empty on page load
+    window.addEventListener('load', function() {
+      passwordInput.value = '';
+    });
+
+    toggleBtn.addEventListener('click', function () {
+      const isPassword = passwordInput.type === 'password';
+      passwordInput.type = isPassword ? 'text' : 'password';
+      this.textContent = isPassword ? 'Hide' : 'Show';
+    });
+  </script>
+
+</body>
+</html>
